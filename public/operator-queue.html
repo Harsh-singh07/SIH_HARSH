@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Centre Operations | Kisan Setu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <link rel="stylesheet" href="/public/css/operator-workspace.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/public/js/supabase-client.js"></script>
+  <script src="/public/js/auth.js"></script>
+  <script src="/public/js/api.js"></script>
+  <script defer src="/public/js/operator.js"></script>
+</head>
+<body class="operator-body">
+  <header class="operator-header">
+    <div class="tricolour" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="operator-nav">
+      <a class="operator-brand" href="/public/operator-queue.html"><span class="brand-mark material-symbols-outlined">agriculture</span><span><strong>किसान सेतु / Kisan Setu</strong><small>MANDI OPERATIONS CONSOLE</small></span></a>
+      <div class="operator-session"><span id="connectionState" class="connection-pill"><i></i> Connecting</span><span class="session-user"><span class="material-symbols-outlined">badge</span><b id="operatorName">Operator</b></span><button class="icon-button" type="button" onclick="signOut()" title="Sign out" aria-label="Sign out"><span class="material-symbols-outlined">logout</span></button></div>
+    </div>
+  </header>
+  <main class="operator-main">
+    <section class="operator-heading">
+      <div><div class="operator-overline"><span class="material-symbols-outlined">sensors</span> Live centre workflow</div><h1>Procurement Queue</h1><p>Verify arrivals, call tokens and complete procurement from one centre-scoped workspace.</p></div>
+      <div class="centre-identity"><span class="material-symbols-outlined">location_on</span><span><small>ASSIGNED MANDI</small><strong id="centreName">Loading centre…</strong><em id="centreMeta">Please wait</em></span></div>
+    </section>
+    <div id="operatorFeedback" class="operator-feedback" role="status" aria-live="polite"></div>
+    <section class="operator-kpis" aria-label="Queue summary">
+      <article><span class="kpi-icon material-symbols-outlined">groups</span><div><small>TOTAL BOOKINGS</small><strong id="totalCount">0</strong><p>For selected date</p></div></article>
+      <article><span class="kpi-icon amber material-symbols-outlined">schedule</span><div><small>WAITING ARRIVAL</small><strong id="waitingCount">0</strong><p>Booked or confirmed</p></div></article>
+      <article><span class="kpi-icon blue material-symbols-outlined">campaign</span><div><small>IN SERVICE</small><strong id="serviceCount">0</strong><p>Called to the counter</p></div></article>
+      <article><span class="kpi-icon green material-symbols-outlined">task_alt</span><div><small>COMPLETED</small><strong id="completedCount">0</strong><p>Procured or paid</p></div></article>
+    </section>
+    <section class="operator-toolbar">
+      <div class="operator-field search-field"><label for="queueSearch">Search queue</label><span class="material-symbols-outlined">search</span><input id="queueSearch" placeholder="Token, farmer, phone or produce" autocomplete="off"></div>
+      <div class="operator-field"><label for="queueDate">Procurement date</label><input id="queueDate" type="date"></div>
+      <div class="operator-field"><label for="queueStatus">Queue status</label><select id="queueStatus"><option value="">All statuses</option><option value="booked">Booked</option><option value="confirmed">Arrival verified</option><option value="in_queue">In service</option><option value="procured">Procured</option><option value="paid">Paid</option><option value="no_show">No show</option></select></div>
+      <div class="toolbar-actions"><button id="refreshQueue" class="operator-button secondary" type="button"><span class="material-symbols-outlined">refresh</span> Refresh</button><button id="printQueue" class="operator-button secondary" type="button"><span class="material-symbols-outlined">print</span> Print</button></div>
+    </section>
+    <div class="operator-layout">
+      <section class="service-card">
+        <div class="service-head"><div><small>CURRENT SELECTION</small><h2>Token at counter</h2></div><span id="selectedStatus" class="operator-chip neutral">No booking</span></div>
+        <div class="token-display"><span>#</span><strong id="now">—</strong></div>
+        <div id="selectedDetails" class="selected-details"><div class="empty-selection"><span class="material-symbols-outlined">person_search</span><p>Select a booking from the queue.</p></div></div>
+        <div id="statusProgress" class="status-progress" aria-label="Booking progress"></div><div id="selectedActions" class="selected-actions"></div>
+      </section>
+      <section class="queue-card">
+        <div class="card-title-row"><div><h2>Centre queue</h2><p>Ordered by slot time and token number.</p></div><span><b id="resultCount">0</b> records</span></div>
+        <div class="queue-columns" aria-hidden="true"><span>Token / farmer</span><span>Slot and produce</span><span>Status</span><span>Next action</span></div>
+        <div id="queue" class="queue-list"><div class="queue-empty">Loading the centre queue…</div></div>
+      </section>
+    </div>
+    <section class="operations-footer-grid">
+      <article class="workflow-card"><div class="card-title-row"><div><h2>Operator workflow</h2><p>Use the next valid action at every stage.</p></div><span class="material-symbols-outlined">account_tree</span></div><div class="workflow-line"><span><i>1</i><b>Booked</b><small>Farmer has a slot</small></span><span><i>2</i><b>Verify arrival</b><small>Confirm at the gate</small></span><span><i>3</i><b>Call token</b><small>Send to counter</small></span><span><i>4</i><b>Procure</b><small>Complete intake</small></span><span><i>5</i><b>Paid</b><small>Record verified status</small></span></div></article>
+      <article class="activity-card"><div class="card-title-row"><div><h2>Session activity</h2><p>Recent actions from this operator screen.</p></div><span class="material-symbols-outlined">history</span></div><div id="activityLog" class="activity-log"><p class="activity-empty">No actions recorded in this session.</p></div></article>
+    </section>
+  </main>
+  <footer class="operator-footer"><span>Centre-scoped access • Farmer updates are generated automatically</span><span id="lastSync">Not synced yet</span></footer>
+</body>
+</html>

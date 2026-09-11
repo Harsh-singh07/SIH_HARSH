@@ -1,0 +1,10 @@
+.codex-ppt-build/
+node_modules/
+.env
+.env.*
+!.env.example
+public/js/config.js
+supabase/.temp/
+*.log
+.DS_Store
+Thumbs.db

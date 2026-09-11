@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbfd"/>
+      <stop offset="1" stop-color="#eef7f1"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#123047" flood-opacity="0.13"/>
+    </filter>
+    <marker id="arrowNavy" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#174a70"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#14945d"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#ef7d23"/>
+    </marker>
+    <style>
+      .title{font:700 46px Arial,sans-serif;fill:#123f62;letter-spacing:.5px}
+      .subtitle{font:500 21px Arial,sans-serif;fill:#527083}
+      .boxTitle{font:700 23px Arial,sans-serif;fill:#123047}
+      .boxText{font:500 17px Arial,sans-serif;fill:#456173}
+      .small{font:600 15px Arial,sans-serif;fill:#526b7a}
+      .whiteTitle{font:700 24px Arial,sans-serif;fill:#fff}
+      .whiteText{font:500 17px Arial,sans-serif;fill:#eaf7f0}
+      .connector{fill:none;stroke:#174a70;stroke-width:4;marker-end:url(#arrowNavy)}
+      .greenConnector{fill:none;stroke:#14945d;stroke-width:4;marker-end:url(#arrowGreen)}
+      .feedback{fill:none;stroke:#ef7d23;stroke-width:4;stroke-dasharray:10 8;marker-end:url(#arrowOrange)}
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <path d="M0 930 C300 850 520 1000 820 920 S1390 850 1920 940 V1080 H0Z" fill="#dff1e5" opacity=".7"/>
+
+  <text x="960" y="62" text-anchor="middle" class="title">KISAN SETU — DEVELOPMENT WORKFLOW</text>
+  <text x="960" y="97" text-anchor="middle" class="subtitle">From the original problem to the connected farmer and mandi procurement prototype</text>
+
+  <!-- Discovery flow -->
+  <rect x="55" y="142" rx="20" width="275" height="128" fill="#fff" stroke="#14945d" stroke-width="3" filter="url(#shadow)"/>
+  <circle cx="91" cy="178" r="18" fill="#14945d"/><text x="91" y="185" text-anchor="middle" font-family="Arial" font-weight="700" font-size="19" fill="#fff">A</text>
+  <text x="122" y="184" class="boxTitle">Start from scratch</text>
+  <text x="83" y="220" class="boxText">Study the SIH brief and</text>
+  <text x="83" y="245" class="boxText">mandi procurement context</text>
+
+  <rect x="395" y="142" rx="20" width="300" height="128" fill="#fff" stroke="#14945d" stroke-width="3" filter="url(#shadow)"/>
+  <text x="425" y="184" class="boxTitle">Define the problem</text>
+  <text x="425" y="220" class="boxText">Uncertain arrivals, queues,</text>
+  <text x="425" y="245" class="boxText">capacity and status visibility</text>
+
+  <rect x="760" y="142" rx="20" width="300" height="128" fill="#fff" stroke="#174a70" stroke-width="3" filter="url(#shadow)"/>
+  <text x="790" y="184" class="boxTitle">Map users and needs</text>
+  <text x="790" y="220" class="boxText">Farmer • Mandi operator</text>
+  <text x="790" y="245" class="boxText">Administrator • Authority</text>
+
+  <rect x="1125" y="142" rx="20" width="340" height="128" fill="#fff" stroke="#174a70" stroke-width="3" filter="url(#shadow)"/>
+  <text x="1155" y="184" class="boxTitle">Design the core workflow</text>
+  <text x="1155" y="220" class="boxText">Configure → Book → Token</text>
+  <text x="1155" y="245" class="boxText">Queue → Procure → Update</text>
+
+  <polygon points="1660,132 1810,206 1660,280 1510,206" fill="#fff4e9" stroke="#ef7d23" stroke-width="3" filter="url(#shadow)"/>
+  <text x="1660" y="195" text-anchor="middle" class="boxTitle">What must be</text>
+  <text x="1660" y="222" text-anchor="middle" class="boxTitle">built?</text>
+
+  <path d="M330 206 H395" class="greenConnector"/>
+  <path d="M695 206 H760" class="connector"/>
+  <path d="M1060 206 H1125" class="connector"/>
+  <path d="M1465 206 H1510" class="connector"/>
+
+  <!-- Parallel build streams -->
+  <path d="M1660 280 V316 H355 V345" class="connector"/>
+  <path d="M1660 280 V316 H960 V345" class="connector"/>
+  <path d="M1660 280 V345" class="connector"/>
+
+  <rect x="90" y="345" rx="20" width="530" height="220" fill="#eaf7ef" stroke="#14945d" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="90" y="345" rx="20" width="530" height="54" fill="#14945d"/>
+  <text x="355" y="380" text-anchor="middle" class="whiteTitle">EXPERIENCE AND UI</text>
+  <text x="125" y="432" class="boxTitle">Create three role-based interfaces</text>
+  <text x="125" y="468" class="boxText">Farmer: registration, booking, dashboard,</text>
+  <text x="125" y="494" class="boxText">inbox, history and printable gate pass</text>
+  <text x="125" y="526" class="boxText">Operator queue + Admin management pages</text>
+  <text x="125" y="551" class="small">Then rebuild the UI using the supplied Stitch design</text>
+
+  <rect x="695" y="345" rx="20" width="530" height="220" fill="#edf4fa" stroke="#174a70" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="695" y="345" rx="20" width="530" height="54" fill="#174a70"/>
+  <text x="960" y="380" text-anchor="middle" class="whiteTitle">BACKEND AND DATA</text>
+  <text x="730" y="432" class="boxTitle">Build the shared Supabase foundation</text>
+  <text x="730" y="468" class="boxText">Authentication + profiles + centres + slots</text>
+  <text x="730" y="494" class="boxText">bookings + notifications</text>
+  <text x="730" y="526" class="boxText">Add triggers, role checks and Row Level Security</text>
+  <text x="730" y="551" class="small">Connect live reads, writes and booking subscriptions</text>
+
+  <rect x="1300" y="345" rx="20" width="530" height="220" fill="#fff3e8" stroke="#ef7d23" stroke-width="3" filter="url(#shadow)"/>
+  <rect x="1300" y="345" rx="20" width="530" height="54" fill="#ef7d23"/>
+  <text x="1565" y="380" text-anchor="middle" class="whiteTitle">SECURE OPERATIONS</text>
+  <text x="1335" y="432" class="boxTitle">Protect administrative actions</text>
+  <text x="1335" y="468" class="boxText">Create admin-only operator provisioning</text>
+  <text x="1335" y="494" class="boxText">through a Supabase Edge Function</text>
+  <text x="1335" y="526" class="boxText">Assign operators to centres and guard routes</text>
+  <text x="1335" y="551" class="small">Keep privileged credentials on the server side</text>
+
+  <!-- Integration -->
+  <path d="M355 565 V615 H835" class="greenConnector"/>
+  <path d="M960 565 V615" class="connector"/>
+  <path d="M1565 565 V615 H1085" class="connector"/>
+  <rect x="785" y="600" rx="22" width="350" height="82" fill="#123f62" filter="url(#shadow)"/>
+  <text x="960" y="635" text-anchor="middle" class="whiteTitle">CONNECTED PROTOTYPE</text>
+  <text x="960" y="662" text-anchor="middle" class="whiteText">UI + database + access + live operations</text>
+
+  <path d="M960 682 V724" class="connector"/>
+  <polygon points="960,713 1105,774 960,835 815,774" fill="#fff" stroke="#174a70" stroke-width="3" filter="url(#shadow)"/>
+  <text x="960" y="766" text-anchor="middle" class="boxTitle">Does each real flow</text>
+  <text x="960" y="794" text-anchor="middle" class="boxTitle">work correctly?</text>
+
+  <!-- Iteration loop -->
+  <text x="1125" y="744" class="small" fill="#14945d">YES</text>
+  <path d="M1105 774 H1215" class="greenConnector"/>
+  <rect x="1215" y="708" rx="20" width="615" height="176" fill="#eaf7ef" stroke="#14945d" stroke-width="3" filter="url(#shadow)"/>
+  <text x="1250" y="748" class="boxTitle">Validate the working flows</text>
+  <text x="1250" y="782" class="boxText">Farmer booking and slot visibility • Admin CRUD</text>
+  <text x="1250" y="808" class="boxText">Operator creation • Responsive pages • Local routes</text>
+  <text x="1250" y="842" class="boxText">Confirm live Supabase connection and deployed function</text>
+  <text x="1250" y="868" class="small">Document architecture, risks, impact and pilot measures</text>
+
+  <text x="688" y="756" class="small" fill="#ef7d23">NO — FIX</text>
+  <path d="M815 774 H665" class="feedback"/>
+  <rect x="90" y="730" rx="18" width="575" height="165" fill="#fff" stroke="#ef7d23" stroke-width="3" filter="url(#shadow)"/>
+  <text x="125" y="770" class="boxTitle">Iteration and debugging loop</text>
+  <text x="125" y="804" class="boxText">Correct invalid API key and signup trigger</text>
+  <text x="125" y="830" class="boxText">Fix Edge Function CORS and deploy it</text>
+  <text x="125" y="856" class="boxText">Fix local routing, stale UI and slot date conversion</text>
+  <text x="125" y="882" class="small">Reject full/empty slots, retest, and return to the prototype</text>
+  <text x="706" y="625" class="small" fill="#ef7d23">RETEST</text>
+  <path d="M665 812 H735 V640 H785" class="feedback"/>
+
+  <!-- Outcome -->
+  <path d="M1522 884 V930" class="greenConnector"/>
+  <rect x="1125" y="930" rx="22" width="795" height="105" fill="#0d8050" filter="url(#shadow)"/>
+  <text x="1522" y="970" text-anchor="middle" class="whiteTitle">CURRENT RESULT: WORKING KISAN SETU PROTOTYPE</text>
+  <text x="1522" y="1003" text-anchor="middle" class="whiteText">Next: atomic capacity booking, offline access, operator validation and controlled mandi pilot</text>
+
+  <rect x="90" y="940" rx="18" width="855" height="82" fill="#fff" stroke="#174a70" stroke-width="3"/>
+  <text x="518" y="974" text-anchor="middle" class="boxTitle">Deliverables produced</text>
+  <text x="518" y="1003" text-anchor="middle" class="boxText">Local web system • Database migrations • Edge Function • SIH presentation • System workflow</text>
+</svg>
