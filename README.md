@@ -36,6 +36,10 @@ Then open `http://localhost:8080/`.
 
 The latest migration adds `amount_paid` and `paid_at` to bookings so operators can record the final amount paid to a farmer.
 
+## Free deployment
+
+The included GitHub Pages workflow publishes the static site for free. Add `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` as GitHub Actions repository secrets, select **GitHub Actions** as the Pages source, and run the deployment workflow. The service-role key must remain only in Supabase Edge Function secrets and must never be added to GitHub or the browser.
+
 ## Current scope
 
 This repository is a working hackathon prototype. Before a production pilot, token allocation should be made atomic, operator workflows should receive field validation, and offline access should be added for essential gate-pass information.
