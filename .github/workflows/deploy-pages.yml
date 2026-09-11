@@ -48,6 +48,8 @@ jobs:
             -e "s|\"/admin/|\"${REPO_BASE}/admin/|g" \
             -e "s|url=/public/|url=${REPO_BASE}/public/|g" \
             -e "s|url=/admin/|url=${REPO_BASE}/admin/|g"
+          find _site -type f -name '*.html' -print0 | xargs -0 sed -i \
+            -e "s|<script src=\"${REPO_BASE}/public/js/supabase-client.js\"></script>|<script src=\"${REPO_BASE}/public/js/config.js\"></script><script src=\"${REPO_BASE}/public/js/supabase-client.js\"></script>|g"
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
